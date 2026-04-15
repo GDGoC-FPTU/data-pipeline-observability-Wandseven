@@ -1,8 +1,8 @@
 # Experiment Report: Data Quality Impact on AI Agent
 
-**Student ID:** AI20K-XXXX
-**Name:** (Dien ten cua ban)
-**Date:** (Dien ngay thuc hien)
+**Student ID:** 2A202600232
+**Name:** Nguyễn Tuấn Kiệt
+**Date:** 15/04/2026
 
 ---
 
@@ -12,8 +12,8 @@ Chay `agent_simulation.py` voi 2 bo du lieu va ghi lai ket qua:
 
 | Scenario | Agent Response | Accuracy (1-10) | Notes |
 |----------|----------------|-----------------|-------|
-| Clean Data (`processed_data.csv`) | (Ghi cau tra loi cua Agent) | | |
-| Garbage Data (`garbage_data.csv`) | (Ghi cau tra loi cua Agent) | | |
+| Clean Data (`processed_data.csv`) | Based on my data, the best choice is Laptop at $1200. | 10 | |
+| Garbage Data (`garbage_data.csv`) | Based on my data, the best choice is Nuclear Reactor at $999999. | 1 | |
 
 ---
 
@@ -21,15 +21,18 @@ Chay `agent_simulation.py` voi 2 bo du lieu va ghi lai ket qua:
 
 ### Tai sao Agent tra loi sai khi dung Garbage Data?
 
-(Viet nhan xet cua ban o day — it nhat 50 tu)
+Dữ liệu lỗi chứa nhiều vấn đề nghiêm trọng:
+- **Duplicate IDs**: ID `1` xuất hiện hai lần, gây nhầm lẫn khi xử lý.
+- **Sai kiểu dữ liệu**: Giá của `Broken Chair` là "ten dollars" thay vì số, khiến việc tính toán thất bại.
+- **Outliers**: Giá của `Nuclear Reactor` là $999,999, vượt xa giá trị hợp lý, làm sai lệch kết quả.
+- **Null values**: `Ghost Item` thiếu giá trị ở cả `id`, `price`, và `category`, dẫn đến lỗi khi lọc dữ liệu.
 
-(Hay phan tich cac van de nhu Duplicate IDs, wrong data types, outliers, null values
-va giai thich tai sao chung anh huong den ket qua cua Agent.)
+Những vấn đề này làm giảm độ chính xác của Agent vì nó dựa vào dữ liệu đầu vào để đưa ra quyết định. Khi dữ liệu không đáng tin cậy, kết quả cũng sẽ không chính xác.
 
 ---
 
 ## 3. Ket luan
 
-**Quality Data > Quality Prompt?** (Dong y hay khong? Giai thich ngan gon.)
+**Quality Data > Quality Prompt?**
 
-(Viet ket luan cua ban o day)
+Đồng ý. Dữ liệu chất lượng cao là nền tảng để đảm bảo kết quả chính xác. Một prompt tốt không thể bù đắp cho dữ liệu đầu vào kém chất lượng. Do đó, cần ưu tiên làm sạch và chuẩn hóa dữ liệu trước khi sử dụng.
